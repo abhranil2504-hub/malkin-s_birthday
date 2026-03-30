@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ===== FIRST PAGE ===== -->
+<section class="login">
+  <div class="hearts"></div>
+
+  <div class="container">
+    <img src="assests/rafipage1.png" class="top-image">
+
+    <h2>Enter Password 💖</h2>
+    <p class="hint">Hint: Whom do you love? 💕</p>
+
+    <input type="password" id="password">
+    <br><br>
+
+    <button id="enterBtn">Enter</button>
+    <p id="message"></p>
+  </div>
+</section>
+
+<!-- ===== SECOND PAGE ===== -->
+<section id="home" class="home">
+  <div class="hearts"></div>
+
+  <img src="assests/princess.jpg" class="center-img">
+
+  <div class="main-layout">
+    <img src="assests/rafipage21.png" class="side-img">
+
+    <div class="home-container">
+      <h1>Happy Birthday Princess Rafiii 💖</h1>
+
+      <p class="cute-text">
+        Happiestt Birthdayy Babyyy💗 <br>
+        A Small Giftt Forr Youu ✨ <br>
+        I Love Youu Cutuuu 💖
+      </p>
+
+      <div class="buttons">
+        <button onclick="openLetter()">Letter 💌</button>
+        <button onclick="openLove()">Why I Love My Baby?? 💖</button>
+      </div>
+    </div>
+
+    <img src="assests/rafipage22.png" class="side-img">
+  </div>
+
+  <div class="celebrate-section">
+    <button onclick="openCelebrate()">Lets Celebrate Babyyy 🎉</button>
+  </div>
+</section>
+
+<!-- ===== LETTER PAGE ===== -->
+<section id="letterPage" class="home">
+  <div class="hearts"></div>
+
+  <div class="letter-box">
+    <h1>For You 💌</h1>
+    <p id="letterText" class="text"></p>
+    <br>
+    <button onclick="goHome()">⬅ Back</button>
+  </div>
+</section>
+
+<!-- ===== LOVE PAGE ===== -->
+<section id="lovePage" class="home">
+  <div class="hearts"></div>
+
+  <div class="letter-box">
+    <h1>Why I Love My Baby?? 💖</h1>
+    <p id="loveText" class="text"></p>
+    <br>
+    <button onclick="goHome()">⬅ Back</button>
+  </div>
+</section>
+
+<!-- ===== CELEBRATE PAGE ===== -->
+<button onclick="goHome()" class="back-home-btn">⬅ Back Home</button>
+
+<section id="celebratePage" class="home">
+  <div class="hearts"></div>
+
+  <h1>Myy Cutuuuu's Collection 💖</h1>
+
+  <div class="carousel">
+    <div class="carousel-track" id="carouselTrack">
+
+      <div class="carousel-item active" data-text="cann i gett a kisss babbyyyyy 😍😍">
+        <img src="assests/mybaby1.jpg">
+      </div>
+
+      <div class="carousel-item active" data-text="cann i gett a kisss babbyyyyy 😍😍">
+        <img src="assests/mybaby2.jpg">
+      </div>
+
+      <div class="carousel-item" data-text="thisss isss isss myyy favvvv 🫶🏻🫶🏻💖">
+        <img src="assests/mybaby3.jpg">
+      </div>
+
+     <div class="carousel-item" data-text="thisss isss isss myyy favvvv 🫶🏻🫶🏻💖">
+        <img src="assests/mybaby4.jpg">
+      </div>
+
+      <div class="carousel-item" data-text="areyy meriii bacchiiii 🤭🤭">
+        <img src="assests/mybaby5.jpg">
+      </div>
+
+     <div class="carousel-item" data-text="mwwwaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh 😘😘">
+        <img src="assests/mybaby6.jpg">
+      </div>
+
+     <div class="carousel-item" data-text="aappp meriii biwiii banogiii?? 🥰🥰">
+        <img src="assests/mybaby7.jpg">
+      </div>
+
+     <div class="carousel-item" data-text="babyy whattt iff sarahhh getsss thosee sameee eyess?? 😍😍">
+        <img src="assests/mybaby8.jpg">
+      </div>
+
+      <div class="carousel-item" data-text="yourrr lipsss trynaa sayy smtggg tooo mineee 😝😝">
+        <img src="assests/mybaby9.jpg">
+      </div>
+
+      <div class="carousel-item" data-text="areyyy meriii apsaraaaa 🤭🤭">
+        <img src="assests/mybaby10.jpg">
+      </div>
+
+      <div class="carousel-item" data-text="myyy cutuuuuuuu frrrrr ✨🫶🏼🫶🏼">
+        <img src="assests/mybaby11.jpg">
+      </div>
+
+      <div class="carousel-item" data-text="meriiii gurlfieee sooo prettyyyyy 🤭🤭🥰">
+        <img src="assests/mybaby12.jpg">
+      </div>
+
+    </div>
+
+    <div class="nav-btns">
+      <button onclick="prevSlide()">←</button>
+      <button onclick="nextSlide()">→</button>
+    </div>
+  </div>
+
+  <button onclick="openQuestion()">Next 💌</button>
+</section>
+
+<!-- ===== POPUP ===== -->
+<div id="popup">
+  <button class="back-btn" onclick="closePopup()">⬅</button>
+  <img id="popupImg">
+  <p id="popupText"></p>
+</div>
+
+<!-- ===== QUESTION PAGE ===== -->
+<section id="questionPage" class="page">
+
+  <div class="container">
+
+    <!-- FIXED VIDEO -->
+    <video id="questionVideo" autoplay muted loop>
+      <source src="assests/default.mp4" type="video/mp4">
+    </video>
+
+    <h1 id="questionText">Do you love me? 🥺💖</h1>
+
+    <!-- FIXED STRUCTURE -->
+    <div id="questionButtons">
+      <button id="yesBtn">YESSS 💖</button>
+      <button id="noBtn">Nooo 😔😔</button>
+    </div>
+
+    <!-- MOVED OUTSIDE -->
+    <div id="responseBox"></div>
+
+    <!-- HIDDEN INITIALLY -->
+    <button id="retryBtn" onclick="resetQuestion()" style="display:none;">Think again 💭</button>
+
+    <button id="finalBtn" onclick="openFinal()" style="display:none;">One Message for you 💌</button>
+
+  </div>
+
+</section>
+
+<!-- ===== FINAL PAGE ===== -->
+<section id="finalPage" class="home">
+  <div class="hearts"></div>
+
+  <!-- videos -->
+  <video class="video top" autoplay muted loop>
+    <source src="assests/vid1.mp4">
+  </video>
+
+  <video class="video bottom" autoplay muted loop>
+    <source src="assests/vid2.mp4">
+  </video>
+
+  <video class="video left" autoplay muted loop>
+    <source src="assests/vid3.mp4">
+  </video>
+
+  <video class="video right" autoplay muted loop>
+    <source src="assests/vid4.mp4">
+  </video>
+
+  <!-- SAME STYLE BOX AS LETTER -->
+  <div class="letter-box">
+    <h1>For You 💌</h1>
+    <p class="text">
+      i know this is just a small effort from meee and it might not be anything bigg but i really put my heart into it because you mean so muchhh to mee i wish i could do so much moreee for youuu because honestly you deserve the whole worlddd and even that wouldnt feel like enoughhh for how special you areee i just wanted to do something that shows even a tiny partt of how much i loveee and care for youuu and i really hopee it made you smileee even a little bittt because seeing you happyyy is all i ever wanttt 💗
+    </p>
+  </div>
+
+</section>
+
+<audio id="bgMusic" loop>
+  <source src="assests/beabadoobee - Glue Song (Lyrics).mp3">
+</audio>
+
+<script src="script.js"></script>
+<div id="noOverlay">
+  <div class="no-box">
+
+    <video autoplay muted loop>
+      <source src="assests/sad.mp4" type="video/mp4">
+    </video>
+
+    <h2>Why you dont love me babyy 😔</h2>
+
+    <button onclick="closeNoBox()">Think Again 💭</button>
+
+  </div>
+</div>
+</body>
+</html>
