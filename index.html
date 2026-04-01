@@ -66,9 +66,14 @@
 
   <div class="letter-box">
     <h1>For You 💌</h1>
-    <p id="letterText" class="text"></p>
+    <p id="letterText" class="text">
+happy birthdayyy babyyy i reallyyy wishh i could be there with youuu todayyy more than anythinggg i wanted to sit beside youuu hold your handd see your smileee in front of meee and celebrate every little momentt togetherrr shonaaa it honestlyyy hurts that i cant be there with youuu in personnn but even thennn my hearttt is completelyyy with youuu every second of this dayyy i loveee youuu sooo muchhh my loveee and i trulyyy hope this dayyy brings youuu all the happinessss warmthh and smileess you deserveee you mean so muchhh to mee more than i can everrr explainnn i wishh i could make your dayyy specialll in personnn make you laughhh tease youuu and just be there with youuu but pleaseee knoww that i am alwayss thinkingg about youuu babyyy i just wantt youuu to feel lovedd valuedd and specialll not just todayyy but every single dayyy you deserveee all the goodd thingss in this worlddd and i hopee todayyy gives youuu even a small partt of that happinessss seeingg youuu happyyy means everythingg to mee shonaaa i promiseee youuu my loveee i will makee up for thiss i will celebratee with youuu properlyyy spend timee with youuu and makee beautifulll memories togetherrr because youuu deserveee nothingg lessss you are so importantt to mee babyyy and i neverrr wantt youuu to feel aloneee no matterr the distanceee i am alwayss here for youuu lovingg youuu caringg for youuu and wishingg the absolute bestt for youuu todayyy and alwayss happy birthdayyy once againn my princessss you mean everythingg to mee 💗
+</p>
+
+<br>
+<button onclick="goHome()">⬅ Back</button>
     <br>
-    <button onclick="goHome()">⬅ Back</button>
+   
   </div>
 </section>
 
@@ -78,16 +83,22 @@
 
   <div class="letter-box">
     <h1>Why I Love My Baby?? 💖</h1>
-    <p id="loveText" class="text"></p>
+    <p id="loveText" class="text">
+i loveee youuu for so many reasonsss that i cant even countt them properlyyy like i love the way you thinkkk the way you feell so deeplyyy and the way your heartt is so pureee and kindd you make everythingg feel softtt and calm without even tryingg and that is somethingg i trulyyy adoreee i loveee your little habitsss your random moodss the way you talkkk and smileee even the way you get mad sometimess it all feels so real and so youuu and i wouldnt changee a single thingg about youuu every partt of youu is specialll to mee i loveee how you careee the way you stayyy and make me feel understooddd you bring a kind of happinessss into my lifee that i didnt even knoww i neededd and most of all i loveee youuu because you are youuu completelyyy real raww and beautifull from the insidee and that is why i will always keep lovingg youuu more and moreee every single dayyy 💗
+</p>
+
+<br>
+<button onclick="goHome()">⬅ Back</button>
     <br>
-    <button onclick="goHome()">⬅ Back</button>
+    
   </div>
 </section>
 
 <!-- ===== CELEBRATE PAGE ===== -->
-<button onclick="goHome()" class="back-home-btn">⬅ Back Home</button>
+
 
 <section id="celebratePage" class="home">
+ 
   <div class="hearts"></div>
 
   <h1>Myy Cutuuuu's Collection 💖</h1>
@@ -99,7 +110,7 @@
         <img src="assests/mybaby1.jpg">
       </div>
 
-      <div class="carousel-item active" data-text="cann i gett a kisss babbyyyyy 😍😍">
+      <div class="carousel-item" data-text="cann i gett a kisss babbyyyyy 😍😍">
         <img src="assests/mybaby2.jpg">
       </div>
 
@@ -163,12 +174,13 @@
 
 <!-- ===== QUESTION PAGE ===== -->
 <section id="questionPage" class="page">
+  
 
   <div class="container">
 
     <!-- FIXED VIDEO -->
     <video id="questionVideo" autoplay muted loop>
-      <source src="assests/default.mp4" type="video/mp4">
+      <source src="assests/ques.mp4" type="video/mp4">
     </video>
 
     <h1 id="questionText">Do you love me? 🥺💖</h1>
@@ -180,15 +192,29 @@
     </div>
 
     <!-- MOVED OUTSIDE -->
-    <div id="responseBox"></div>
+<div id="responseBox"></div>
 
-    <!-- HIDDEN INITIALLY -->
-    <button id="retryBtn" onclick="resetQuestion()" style="display:none;">Think again 💭</button>
+<button id="retryBtn" onclick="resetQuestion()" style="display:none;">Think again 💭</button>
 
-    <button id="finalBtn" onclick="openFinal()" style="display:none;">One Message for you 💌</button>
+<button id="loveBtn" style="display:none;">3 things I love about you 💖</button>
 
+<button id="finalBtn" onclick="openFinal()" style="display:none;">One Message for you 💌</button>
   </div>
 
+</section>
+
+<section id="complimentPage" class="home">
+  <div class="hearts"></div>
+
+  <div class="letter-box">
+    <h1>Things I Love About You 💖</h1>
+
+    <div id="complimentContent" class="text"></div>
+
+    <br>
+    <button id="nextComplimentBtn">Next ➡</button>
+    
+  </div>
 </section>
 
 <!-- ===== FINAL PAGE ===== -->
@@ -231,7 +257,7 @@
   <div class="no-box">
 
     <video autoplay muted loop>
-      <source src="assests/sad.mp4" type="video/mp4">
+      <source src="assests/cry.mp4" type="video/mp4">
     </video>
 
     <h2>Why you dont love me babyy 😔</h2>
@@ -240,5 +266,10 @@
 
   </div>
 </div>
+
+<button onclick="goHome()" class="back-home-btn" id="backHomeBtn" style="display:none;">
+  ⬅ Back Home
+</button>
+
 </body>
 </html>

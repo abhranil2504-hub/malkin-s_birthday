@@ -1,56 +1,284 @@
 /* ================= PASSWORD ================= */
 const correctPassword = "Iloveabhranil";
 
-/* ================= GLOBAL VARIABLES ================= */
+/* ================= GLOBAL ================= */
 let currentIndex = 0;
-let items = [];
-let track = null;
+let loveStep = 0;
 
-/* ================= START AFTER PAGE LOAD ================= */
+/* ================= LOAD ================= */
 document.addEventListener("DOMContentLoaded", () => {
+const enterBtn = document.getElementById("enterBtn");
+if (enterBtn) {
+  enterBtn.onclick = checkPassword;
+}
 
-  document.getElementById("enterBtn").addEventListener("click", checkPassword);
+  const loveBtn = document.getElementById("loveBtn");
+  const responseBox = document.getElementById("responseBox");
+  const finalBtn = document.getElementById("finalBtn");
 
-  // hearts
-  setInterval(() => {
-    document.querySelectorAll(".hearts").forEach(container => {
-      let heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerText = "💖";
-      heart.style.left = Math.random() * 100 + "vw";
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const retryBtn = document.getElementById("retryBtn");
+  const video = document.getElementById("questionVideo");
 
-      container.appendChild(heart);
-      setTimeout(() => heart.remove(), 4000);
-    });
-  }, 300);
-
-  // carousel
-  items = document.querySelectorAll(".carousel-item");
-  track = document.getElementById("carouselTrack");
-
-  items.forEach(item => {
-    item.addEventListener("click", () => openImage(item));
+  const music = document.getElementById("bgMusic");
+  if (music) {
+  music.addEventListener("ended", () => {
+    music.currentTime = 0;
+    music.play();
   });
+}
+
+ 
+
+  /* ================= FLOATING HEARTS ================= */
+ function createHeart() {
+  const activePage = document.querySelector("section:not([style*='display: none'])");
+  if (!activePage) return;
+
+  const container = activePage.querySelector(".hearts");
+  if (!container) return;
+
+  // LIMIT hearts (important)
+  if (container.children.length > 15) return;
+
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerText = "💖";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (15 + Math.random() * 20) + "px";
+
+  container.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 5000);
+}
+
+  setInterval(createHeart, 300);
+
+  /* ================= YES ================= */
+  if (yesBtn) {
+    yesBtn.onclick = () => {
+
+      document.getElementById("questionText").style.display = "none";
+      document.getElementById("questionButtons").style.display = "none";
+
+      video.src = "assests/happy.mp4";
+      video.load();
+      video.play();
+
+      responseBox.innerHTML = "";
+
+      loveStep = 0;
+      loveBtn.style.display = "inline-block";
+    };
+  }
+
+  /* ================= NO ================= */
+if (noBtn) {
+  noBtn.onclick = () => {
+
+    document.getElementById("questionButtons").style.display = "none";
+
+    video.src = "assests/cry.mp4";
+    video.load();
+    video.play();
+
+    responseBox.innerHTML = "";
+
+    retryBtn.style.display = "inline-block";
+  };
+}
+
+  /* ================= LOVE FLOW ================= */
+  if (loveBtn) {
+    loveBtn.onclick = () => {
+
+      loveStep++;
+
+      if (loveStep === 1) {
+        responseBox.innerHTML = "1. yourr cutenessss 💖";
+        loveBtn.innerText = "Next ➡️";
+      }
+
+      else if (loveStep === 2) {
+        responseBox.innerHTML = "2. yourr beautyyy 😍";
+      }
+
+      else if (loveStep === 3) {
+
+  // ❌ hide old question video
+  document.getElementById("questionVideo").style.display = "none";
+
+  responseBox.innerHTML = `
+  <div class="final-layout">
+
+    <!-- LEFT -->
+    <div class="side">
+      1. your cutenessss  <br>
+      2. your beautyyy  <br>
+      3. your smileee <br>
+      4. your eyesss <br>
+      5. your laughhh <br>
+      6. your voiceee <br>
+      7. your vibeee <br>
+      8. your kindnessss <br>
+      9. your honestyyy <br>
+      10. your cutenessss <br>
+      11. your attitudeee <br>
+      12. your confidenceee <br>
+      13. your shynessss <br>
+      14. your careee <br>
+      15. your energyyy <br>
+      16. your styleee <br>
+      17. your presenceee <br>
+      18. your warmthhh <br>
+      19. your mood swingsss <br>
+      20. your expressionsss <br>
+      21. your loyaltyyy <br>
+      22. your softnessss <br>
+      23. your strengthhh <br>
+      24. your patienceee <br>
+      25. your reactionsss <br>
+      26. your habitsss <br>
+      27. your focusss <br>
+      28. your efforttt <br>
+      29. your loveee <br>
+      30. your trusttt <br>
+      31. your supporttt <br>
+      32. your charm <br>
+      33. your glowww <br>
+      34. your uniquenessss <br>
+      35. your innocenceee <br>
+      36. your humorrr <br>
+      37. your curiosityyy <br>
+      38. your intelligenceee <br>
+      39. your creativityyy <br>
+      40. your passionnn <br>
+      41. your sparkkk <br>
+      42. your textsss <br>
+      43. your callsss <br>
+      44. your words <br>
+      45. your presence in my lifeee <br>
+      46. your little talksss <br>
+      47. your big hearttt <br>
+      48. your random thoughtsss <br>
+      49. your late-night energyyy <br>
+      50. your sleepy voiceee
+    </div>
+
+    <!-- CENTER -->
+    <div class="center-box no-bg">
+      <video autoplay muted loop>
+        <source src="assests/happy.mp4" type="video/mp4">
+      </video>
+
+      <button onclick="openFinal()" class="final-btn">
+        Last Message For You 💌
+      </button>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="side">
+      51. your smile in picturesss <br>
+      52. your natural beautyyy <br>
+      53. your effort for meee <br>
+      54. your understandinggg <br>
+      55. your loyalty to usss <br>
+      56. your way of lovinggg <br>
+      57. your comforttt <br>
+      58. your reassuranceee <br>
+      59. your positivityyy <br>
+      60. your calmnessss <br>
+      61. your chaosss <br>
+      62. your vibe with meee <br>
+      63. your attentionnn <br>
+      64. your respecttt <br>
+      65. your honesty with meee <br>
+      66. your way of caringgg <br>
+      67. your reactions to meee <br>
+      68. your way of talkinggg <br>
+      69. your presence in tough timesss <br>
+      70. your belief in meee <br>
+      71. your sweetnessss <br>
+      72. your realnessss <br>
+      73. your flawsss <br>
+      74. your perfection in my eyesss <br>
+      75. your everythinggg <br>
+      76. your existenceee <br>
+      77. your impact on meee <br>
+      78. your memories with meee <br>
+      79. your future with meee <br>
+      80. your love for meee <br>
+      81. your place in my hearttt <br>
+      82. your importanceee <br>
+      83. your valueee <br>
+      84. your meaning to meee <br>
+      85. your smile againnn <br>
+      86. your eyes againnn <br>
+      87. your laugh againnn <br>
+      88. your everything againnn <br>
+      89. just youuu <br>
+      90. always youuu <br>
+      91. only youuu <br>
+      92. you being mineee <br>
+      93. me being yoursss <br>
+      94. usss <br>
+      95. our bonddd <br>
+      96. our momentsss <br>
+      97. our storyyy <br>
+      98. our loveee <br>
+      99. everything about youuu <br>
+      100. you, endlesslyyy 💖
+    </div>
+
+  </div>
+  `;
+
+  loveBtn.style.display = "none";
+}
+
+      else if (loveStep === 4) {
+  loveBtn.style.display = "none";
+  finalBtn.style.display = "inline-block";
+  finalBtn.innerText = "Last Message For You 💌";
+}
+    };
+  }
+
+  /* ================= POPUP ================= */
+  document.querySelectorAll(".carousel-item").forEach(item => {
+    item.onclick = () => {
+      document.getElementById("popup").style.display = "flex";
+      document.getElementById("popupImg").src = item.querySelector("img").src;
+      document.getElementById("popupText").innerText = item.dataset.text;
+    };
+  });
+
+  // ✅ ADD THIS HERE
+const backBtn = document.getElementById("backHomeBtn");
+if (backBtn) backBtn.style.display = "none";
 
 });
 
 
-/* ================= PASSWORD CHECK ================= */
+/* ================= PASSWORD ================= */
 function checkPassword() {
   let input = document.getElementById("password").value.trim();
   let msg = document.getElementById("message");
+
+  
 
   if (input === correctPassword) {
     msg.innerText = "Welcome merii malkinn 🥰😍";
     msg.style.color = "green";
 
-    let music = document.getElementById("bgMusic");
-
-    if (!music.started) {
-      music.volume = 0.6;
-      music.play();
-      music.started = true;
-    }
+      // 🎵 ADD THIS
+  const music = document.getElementById("bgMusic");
+  if (music) {
+    music.currentTime = 0;
+    music.play().catch(() => {});
+  }
 
     setTimeout(() => {
       document.querySelector(".login").style.display = "none";
@@ -63,236 +291,77 @@ function checkPassword() {
   }
 }
 
-
 /* ================= NAVIGATION ================= */
-function openLetter() {
-  hideAll();
-  document.getElementById("letterPage").style.display = "flex";
-  startLetter();
+function hideAll() {
+  document.querySelectorAll("section").forEach(sec => {
+    sec.style.display = "none";
+  });
+
+  // 🔴 ALWAYS HIDE BUTTON FIRST
+  const btn = document.getElementById("backHomeBtn");
+  if (btn) btn.style.display = "none";
 }
 
-function openLove() {
-  hideAll();
-  document.getElementById("lovePage").style.display = "flex";
-  startLove();
-}
-
+function openLetter() { hideAll(); document.getElementById("letterPage").style.display = "flex"; }
+function openLove() { hideAll(); document.getElementById("lovePage").style.display = "flex"; }
 function openCelebrate() {
   hideAll();
   document.getElementById("celebratePage").style.display = "flex";
-  celebrate();
-}
 
+  // ✅ SHOW BUTTON HERE
+  document.getElementById("backHomeBtn").style.display = "block";
+}
 function openQuestion() {
   hideAll();
   document.getElementById("questionPage").style.display = "flex";
-  resetQuestion(); // IMPORTANT FIX
-}
 
-function openFinal() {
-  hideAll();
-  document.getElementById("finalPage").style.display = "flex";
+  // ✅ SHOW BUTTON HERE
+  document.getElementById("backHomeBtn").style.display = "block";
 }
-
+function openFinal() { hideAll(); document.getElementById("finalPage").style.display = "flex"; }
 function goHome() {
   hideAll();
   document.getElementById("home").style.display = "flex";
 }
 
-/* 🔥 FIX: hide everything */
-function hideAll() {
-  document.getElementById("home").style.display = "none";
-  document.getElementById("letterPage").style.display = "none";
-  document.getElementById("lovePage").style.display = "none";
-  document.getElementById("celebratePage").style.display = "none";
-  document.getElementById("questionPage").style.display = "none";
-  document.getElementById("finalPage").style.display = "none";
-}
-
-
-/* ================= LETTER ================= */
-const letterMsg = `happy birthdayyy babyyy i reallyyy wishh i could be there with youuu todayyy more than anythinggg i wanted to sit beside youuu hold your handd see your smileee in front of meee and celebrate every little momentt togetherrr shonaaa it honestlyyy hurts that i cant be there with youuu in personnn but even thennn my hearttt is completelyyy with youuu every second of this dayyy i loveee youuu sooo muchhh my loveee and i trulyyy hope this dayyy brings youuu all the happinessss warmthh and smileess you deserveee you mean so muchhh to mee babbyy more than i can everrr explainnn i wishh i could make your dayyy specialll in personnn make you laughhh tease youuu and just be there with youuu but pleaseee knoww that i am alwayss thinkingg about youuu babyyy i just wantt youuu to feel lovedd valuedd and specialll not just todayyy but every single dayyy you deserveee all the goodd thingss in this worlddd and i hopee todayyy gives youuu even a small partt of that happinessss seeingg youuu happyyy means everythingg to mee shonaaa i promiseee youuu my loveee i will makee up for thiss i will celebratee with youuu properlyyy spend timee with youuu and makee beautifulll memories togetherrr because youuu deserveee nothingg lessss you are so importantt to mee babyyy and i neverrr wantt youuu to feel aloneee no matterr the distanceee i am alwayss here for youuu lovingg youuu caringg for youuu and wishingg the absolute bestt for youuu todayyy and alwayss happy birthdayyy once againn my princessss you mean everythingg to mee 💗`;
-let i = 0;
-
-function startLetter() {
-  let box = document.getElementById("letterText");
-  box.innerHTML = "";
-  i = 0;
-  typeLetter();
-}
-
-function typeLetter() {
-  if (i < letterMsg.length) {
-    document.getElementById("letterText").innerHTML += letterMsg.charAt(i);
-    i++;
-    setTimeout(typeLetter, 15);
-  }
-}
-
-
-/* ================= LOVE ================= */
-const loveMsg = `iff myy cutuuu wantss too knoww whyy i lovee herr thenn i loveee youuu for so many reasonsss that i cant even countt them properlyyy like i love the way you thinkkk the way you feell so deeplyyy and the way your heartt is so pureee and kindd you have this way of making everythingg feel softtt and calm without even tryingg and that is somethingg i trulyyy adoreee i loveee your little habitsss likee the way you talkkk speciallyy youu callingg meee "babyyyyy" anddd "bacchaaaa" and even the way you get mad sometimess it all feels so real and so youuu and i wouldnt changee a single thingg about youuu because every partt of youu is specialll to mee i loveee the way you careee the way you stayyy and the way you make me feel understooddd you make me feel like i matterr and that is somethingg i will neverrr take for granteddd you bring a kind of happinessss into my lifee that i didnt even knoww i neededd and most of all i loveee youuu because you are youuu completelyyy real raww and beautifull from the insidee and that is the reasonnn i will always keep lovingg youuu more and moreee every single dayyy 💗`;
-let j = 0;
-
-function startLove() {
-  let box = document.getElementById("loveText");
-  box.innerHTML = "";
-  j = 0;
-  typeLove();
-}
-
-function typeLove() {
-  if (j < loveMsg.length) {
-    document.getElementById("loveText").innerHTML += loveMsg.charAt(j);
-    j++;
-    setTimeout(typeLove, 15);
-  }
-}
-
-
-/* ================= CONFETTI ================= */
-function celebrate() {
-  for (let i = 0; i < 80; i++) {
-    let c = document.createElement("div");
-    c.className = "confetti";
-
-    let colors = ["#ff4d88", "#ffd166", "#06d6a0", "#118ab2", "#ff9bb3"];
-    c.style.background = colors[Math.floor(Math.random() * colors.length)];
-
-    c.style.left = "50%";
-    c.style.top = "50%";
-
-    let x = (Math.random() - 0.5) * 800 + "px";
-    let y = (Math.random() - 0.5) * 800 + "px";
-
-    c.style.setProperty("--x", x);
-    c.style.setProperty("--y", y);
-
-    document.body.appendChild(c);
-    setTimeout(() => c.remove(), 2000);
-  }
-}
-
-
 /* ================= CAROUSEL ================= */
-function updateCarousel() {
-  items.forEach((item, index) => {
-    item.classList.remove("active");
-    if (index === currentIndex) {
-      item.classList.add("active");
-    }
-  });
-
-  const offset = -currentIndex * 200;
-  track.style.transform = `translateX(${offset}px)`;
-}
-
 function nextSlide() {
-  if (currentIndex < items.length - 1) {
-    currentIndex++;
-    updateCarousel();
-  }
+  const track = document.getElementById("carouselTrack");
+  const items = document.querySelectorAll(".carousel-item");
+
+  currentIndex++;
+  if (currentIndex >= items.length) currentIndex = 0;
+
+  track.style.transform = `translateX(-${currentIndex * 200}px)`;
 }
 
 function prevSlide() {
-  if (currentIndex > 0) {
-    currentIndex--;
-    updateCarousel();
-  }
+  const track = document.getElementById("carouselTrack");
+  const items = document.querySelectorAll(".carousel-item");
+
+  currentIndex--;
+  if (currentIndex < 0) currentIndex = items.length - 1;
+
+  track.style.transform = `translateX(-${currentIndex * 200}px)`;
 }
 
-
-/* ================= POPUP ================= */
-function openImage(item) {
-  let img = item.querySelector("img").src;
-  let text = item.getAttribute("data-text");
-
-  document.getElementById("popupImg").src = img;
-  document.getElementById("popupText").innerText = text;
-
-  document.getElementById("popup").style.display = "flex";
-}
-
+/* ================= POPUP CLOSE ================= */
 function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
 
-
-/* ================= QUESTION PAGE (FIXED) ================= */
-
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
-const responseBox = document.getElementById("responseBox");
-const video = document.getElementById("questionVideo");
-const retryBtn = document.getElementById("retryBtn");
-const finalBtn = document.getElementById("finalBtn");
-
-// videos
-const defaultVideo = "assests/default.mp4";
-const yesVideo = "assests/happy.mp4";
-const noVideo = "assests/sad.mp4";
-
-// reset
 function resetQuestion() {
-  video.src = defaultVideo;
-  video.play();
+  const video = document.getElementById("questionVideo");
 
-  responseBox.innerHTML = "";
-
-  retryBtn.style.display = "none";
-  finalBtn.style.display = "none";
-}
-
-// YES
-yesBtn.onclick = () => {
-  // hide question text
-  document.getElementById("questionText").style.display = "none";
-
-  // hide YES / NO buttons
-  document.getElementById("questionButtons").style.display = "none";
-
-  // play happy video
-  video.src = "assests/happy.mp4";
-  video.play();
-
-  // remove any text
-  responseBox.innerHTML = "";
-
-  // show only final button
-  finalBtn.style.display = "inline-block";
-  retryBtn.style.display = "none";
-};
-// NO
-noBtn.onclick = () => {
-  // hide question
-  document.getElementById("questionText").style.display = "none";
-
-  // hide YES/NO buttons
-  document.getElementById("questionButtons").style.display = "none";
-
-  // change video
-  video.src = "assests/cry.mp4";
-  video.play();
-
-  // show sad message with proper style
-  responseBox.innerHTML = `<p id="sadText">Why you dont love me babyy 😔</p>`;
-
-  // show retry
-  retryBtn.style.display = "inline-block";
-  finalBtn.style.display = "none";
-};
-
-// retry
-function resetQuestion() {
-  video.src = "assests/ques.mp4";
-  video.play();
-
-  // show question again
   document.getElementById("questionText").style.display = "block";
   document.getElementById("questionButtons").style.display = "block";
 
-  responseBox.innerHTML = "";
+  document.getElementById("responseBox").innerHTML = "";
 
-  retryBtn.style.display = "none";
-  finalBtn.style.display = "none";
+  document.getElementById("retryBtn").style.display = "none";
+  document.getElementById("loveBtn").style.display = "none";
+
+  video.src = "assests/ques.mp4";
+  video.load();
+  video.play();
 }
